@@ -49,6 +49,9 @@ func main() {
 					case "html":
 						bytes := html_build(setting_file, source)
 						make_file("output.html", bytes)
+					case "pdf":
+						bytes := pdf_build(setting_file, source)
+						make_file("output.pdf", bytes)
 
 					}
 					//image_bytes := image_build(setting_file, source)

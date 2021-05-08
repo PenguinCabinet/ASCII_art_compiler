@@ -17,7 +17,15 @@ import (
 )
 
 func split_strings(text string) []string {
-	return strings.Split(text, "\n")
+	//return strings.Split(text, "\n")
+	text = strings.Replace(text, "\r\n", "\n", -1)
+	return strings.FieldsFunc(text, func(c rune) bool {
+		if c == '\n' || c == '\r' {
+			return true
+		} else {
+			return false
+		}
+	})
 }
 
 func Get_img_wh(text []string, opt *truetype.Options, ft *truetype.Font, face font.Face, setting setting_file_t) (int, int) {
