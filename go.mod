@@ -1,6 +1,6 @@
 module github.com/pengincoalition/ASCII_art_compiler.git
 
-go 1.15
+go 1.16
 
 require (
 	github.com/goki/freetype v0.0.0-20181231101311-fa8a33aabaff // indirect

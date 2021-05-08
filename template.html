@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+<style>
+@font-face {
+	    font-family:'SourceHanSansJP-Heavy';
+	    src:url("data:application/x-font-ttf;base64,{{.Font}}") format("ttf")
+}
+}
+</style>
+  </head>
+  <body>
+	  <div>
+		  {{range .Data}}{{ . }}<br>{{end}}
+	  </div>
+  </body>
+</html>
+

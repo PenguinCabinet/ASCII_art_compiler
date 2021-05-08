@@ -26,6 +26,13 @@ func main() {
 				Name:    "build",
 				Aliases: []string{"build"},
 				Usage:   "Build the project ASCII art",
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:  "type",
+						Value: "image",
+						Usage: "The type of output file.",
+					},
+				},
 				Action: func(c *cli.Context) error {
 					setting_file := new_setting_file_t()
 					temp_setting := (file_load("./setting.json"))
@@ -35,8 +42,17 @@ func main() {
 
 					source := string(file_load("./main.aasc"))
 
-					image_bytes := image_build(setting_file, source)
-					make_file("output.png", image_bytes)
+					switch c.String("type") {
+					case "image":
+						image_bytes := image_build(setting_file, source)
+						make_file("output.png", image_bytes)
+					case "html":
+						bytes := html_build(setting_file, source)
+						make_file("output.html", bytes)
+
+					}
+					//image_bytes := image_build(setting_file, source)
+					//make_file("output.png", image_bytes)
 					//TODO switch
 					//fmt.Println("completed task: ", c.Args().First())
 					return nil
