@@ -4,7 +4,7 @@ ASCII Art Compiler is the tool that output a png file, a pdf file or a html file
 ![img1](https://github.com/pengincoalition/ASCII_art_compiler/raw/master/explain/img1/output.png)
 
 # Features
-* This can output pdf, png or html.
+* This can output pdf, png or html by a ASCII art file.
 * This is cli tool.
 * This is a single binary.
 
