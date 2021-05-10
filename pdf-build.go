@@ -38,7 +38,7 @@ func pdf_build(setting setting_file_t, source string) []byte {
 	text_height := int(math.Sqrt(float64(setting.Font_size) * 72))
 
 	pdf := gopdf.GoPdf{}
-	pdf.Start(gopdf.Config{PageSize: gopdf.Rect{W: float64(imageWidth), H: float64(imageHeight)}}) //595.28, 841.89 = A4
+	pdf.Start(gopdf.Config{PageSize: gopdf.Rect{W: float64(imageWidth), H: float64(imageHeight)}})
 	pdf.AddPage()
 
 	err = pdf.AddTTFFont("font", "./font/font.ttf")

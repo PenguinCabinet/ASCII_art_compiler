@@ -28,12 +28,20 @@ func main() {
 				Usage:   "Build the project ASCII art",
 				Flags: []cli.Flag{
 					&cli.StringFlag{
+						Name:  "o",
+						Value: "____default",
+						Usage: "The output file name.",
+					},
+					&cli.StringFlag{
 						Name:  "type",
 						Value: "image",
 						Usage: "The type of output file.",
 					},
 				},
 				Action: func(c *cli.Context) error {
+
+					fname := c.String("o")
+
 					setting_file := new_setting_file_t()
 					temp_setting := (file_load("./setting.json"))
 					if err := json.Unmarshal(temp_setting, &setting_file); err != nil {
@@ -44,14 +52,23 @@ func main() {
 
 					switch c.String("type") {
 					case "image":
+						if fname == "____default" {
+							fname = "output.png"
+						}
 						image_bytes := image_build(setting_file, source)
-						make_file("output.png", image_bytes)
+						make_file(fname, image_bytes)
 					case "html":
+						if fname == "____default" {
+							fname = "output.html"
+						}
 						bytes := html_build(setting_file, source)
-						make_file("output.html", bytes)
+						make_file(fname, bytes)
 					case "pdf":
+						if fname == "____default" {
+							fname = "output.pdf"
+						}
 						bytes := pdf_build(setting_file, source)
-						make_file("output.pdf", bytes)
+						make_file(fname, bytes)
 
 					}
 					//image_bytes := image_build(setting_file, source)
