@@ -12,7 +12,7 @@ ASCII Art Compiler is the tool that output a png file, a pdf file or a html file
 ## New project
 ```
 acc new
-#You rename any ttf font file to "font.ttf" and move it to "font" dictionary.
+#You rename any ttf font file to "font.ttf" and move it to "./font" dictionary.
 ```
 
 ## Build
