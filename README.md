@@ -9,14 +9,6 @@ ASCII Art Compiler is the tool that output a png file, a pdf file or a html file
 * This is a single binary.
 
 # Quick strat
-## Build
-We will make executable files.
-```shell
-git clone https://github.com/pengincoalition/ASCII_art_compiler
-cd ASCII_art_compiler
-make
-#You move "acc" to the executable path.
-```
 ## New project
 ```
 acc new
@@ -35,6 +27,7 @@ acc build --type html
 
 # Futures
 * Making real time view.
-* Making executable files.
- 
+* Changing design of output files.
+
+
 
