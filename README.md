@@ -1,18 +1,28 @@
 # ASCII Art Compiler
-ASCII Art Compiler is the tool that output a png file, a pdf file or a html file by a ASCII art file.
+ASCII Art Compiler is the tool that output the png file, the pdf file or the html file by the ASCII art file.
 
 ![img1](https://github.com/pengincoalition/ASCII_art_compiler/raw/master/explain/img1/output.png)
 
 # Features
-* This can output pdf, png or html by a ASCII art file.
-* This is cli tool.
-* This is a single binary.
+* This can output a png file, the pdf file or the html file by the ASCII art file.
+* This is the cli tool.
+* This is the single binary.
 
 # Quick strat
-## New project
-```
+## Make New project
+```shell
+mkdir your-project
+cd your-project
 acc new
+mv /favorite.ttf ./font/font.ttf
 #You rename any ttf font file to "font.ttf" and move it to "./font" dictionary.
+```
+
+## Draw ASCII art
+
+```shell
+nvim main.aasc
+#Use your favorit text editor and enjoy drawing the ASCII art!
 ```
 
 ## Build
