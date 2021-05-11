@@ -22,7 +22,7 @@ mv /favorite.ttf ./font/font.ttf
 
 ```shell
 nvim main.aasc
-#Use your favorit text editor and enjoy drawing the ASCII art!
+#Use your favorite text editor and enjoy drawing the ASCII art!
 ```
 
 ## Build
