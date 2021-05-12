@@ -7,4 +7,5 @@ require (
 	github.com/signintech/gopdf v0.9.16 // indirect
 	github.com/urfave/cli/v2 v2.3.0 // indirect
 	golang.org/x/image v0.0.0-20210220032944-ac19c3e999fb // indirect
+	golang.org/x/net v0.0.0-20210510120150-4163338589ed // indirect
 )

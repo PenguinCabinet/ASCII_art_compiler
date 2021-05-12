@@ -8,6 +8,42 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+func cli_build(out_fname string, type_data string) error {
+	fname := out_fname
+
+	setting_file := new_setting_file_t()
+	temp_setting := (file_load("./setting.json"))
+	if err := json.Unmarshal(temp_setting, &setting_file); err != nil {
+		log.Fatal(err)
+	}
+
+	source := string(file_load("./main.aasc"))
+
+	switch type_data {
+	case "image":
+		if fname == "____default" {
+			fname = "output.png"
+		}
+		image_bytes := image_build(setting_file, source)
+		make_file(fname, image_bytes)
+	case "html":
+		if fname == "____default" {
+			fname = "output.html"
+		}
+		bytes := html_build(setting_file, source)
+		make_file(fname, bytes)
+	case "pdf":
+		if fname == "____default" {
+			fname = "output.pdf"
+		}
+		bytes := pdf_build(setting_file, source)
+		make_file(fname, bytes)
+
+	}
+
+	return nil
+}
+
 func main() {
 
 	app := &cli.App{
@@ -41,36 +77,23 @@ func main() {
 				Action: func(c *cli.Context) error {
 
 					fname := c.String("o")
+					cli_build(fname, c.String("type"))
 
-					setting_file := new_setting_file_t()
-					temp_setting := (file_load("./setting.json"))
-					if err := json.Unmarshal(temp_setting, &setting_file); err != nil {
-						log.Fatal(err)
-					}
+					//image_bytes := image_build(setting_file, source)
+					//make_file("output.png", image_bytes)
+					//TODO switch
+					//fmt.Println("completed task: ", c.Args().First())
+					return nil
+				},
+			},
+			{
+				Name:    "real-time-preview",
+				Aliases: []string{"rtp"},
+				Usage:   "Build the project ASCII art",
+				Flags:   []cli.Flag{},
+				Action: func(c *cli.Context) error {
 
-					source := string(file_load("./main.aasc"))
-
-					switch c.String("type") {
-					case "image":
-						if fname == "____default" {
-							fname = "output.png"
-						}
-						image_bytes := image_build(setting_file, source)
-						make_file(fname, image_bytes)
-					case "html":
-						if fname == "____default" {
-							fname = "output.html"
-						}
-						bytes := html_build(setting_file, source)
-						make_file(fname, bytes)
-					case "pdf":
-						if fname == "____default" {
-							fname = "output.pdf"
-						}
-						bytes := pdf_build(setting_file, source)
-						make_file(fname, bytes)
-
-					}
+					real_preview_server()
 					//image_bytes := image_build(setting_file, source)
 					//make_file("output.png", image_bytes)
 					//TODO switch
