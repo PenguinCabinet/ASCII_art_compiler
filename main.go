@@ -47,11 +47,12 @@ func cli_build(out_fname string, type_data string) error {
 func main() {
 
 	app := &cli.App{
+		Name: "ASCII Art Compiler",
 		Commands: []*cli.Command{
 			{
 				Name:    "new",
 				Aliases: []string{"n"},
-				Usage:   "New project",
+				Usage:   "Make new project",
 				Action: func(c *cli.Context) error {
 					//fmt.Println("added task: ", c.Args().First())
 					new_project()
@@ -60,7 +61,7 @@ func main() {
 			},
 			{
 				Name:    "build",
-				Aliases: []string{"build"},
+				Aliases: []string{"b"},
 				Usage:   "Build the project ASCII art",
 				Flags: []cli.Flag{
 					&cli.StringFlag{
@@ -78,26 +79,17 @@ func main() {
 
 					fname := c.String("o")
 					cli_build(fname, c.String("type"))
-
-					//image_bytes := image_build(setting_file, source)
-					//make_file("output.png", image_bytes)
-					//TODO switch
-					//fmt.Println("completed task: ", c.Args().First())
 					return nil
 				},
 			},
 			{
 				Name:    "real-time-preview",
 				Aliases: []string{"rtp"},
-				Usage:   "Build the project ASCII art",
+				Usage:   "Real time preview of built files.",
 				Flags:   []cli.Flag{},
 				Action: func(c *cli.Context) error {
 
 					real_preview_server()
-					//image_bytes := image_build(setting_file, source)
-					//make_file("output.png", image_bytes)
-					//TODO switch
-					//fmt.Println("completed task: ", c.Args().First())
 					return nil
 				},
 			},
