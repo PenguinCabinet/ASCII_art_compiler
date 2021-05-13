@@ -1,0 +1,24 @@
+<html>
+<head>
+
+      <title>Real time preview</title>
+      <script type="text/javascript">
+      var sock = null;
+      var myData = "";
+      function update() {
+	      location.reload();
+      };
+      window.onload = function() {
+          sock = new WebSocket("ws://"+location.host+"/__s");
+          sock.onmessage = function(event) {
+              update();
+          };
+      };
+      </script>
+</head>
+<body>
+        <a href="/"><h2>Home</h2></a>
+        %s
+</body>
+</html>
+

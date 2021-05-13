@@ -1,7 +1,9 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -15,33 +17,11 @@ var real_preview_one_html map[string]string = map[string]string{
 	"pdf":   `<embed src="./temp/out.pdf" type="application/pdf" width="100%" height="100%">`,
 }
 
-var real_preview_html string = `
-<html>
-<head>
+//go:embed real_time_preview_index.html
+var real_preview_html_index string
 
-      <title>Real time preview</title>
-
-      <script type="text/javascript">
-      var sock = null;
-      var myData = "";
-      function update() {
-	      location.reload();
-      };
-      window.onload = function() {
-          sock = new WebSocket("ws://"+location.host+"/__s");
-          sock.onmessage = function(event) {
-              update();
-          };
-      };
-      </script>
-</head>
-<body>
-</body>
-
-%s
-
-</html>
-`
+//go:embed real_time_preview.html
+var real_preview_html string
 
 func real_preview_server() {
 	datach := make(chan bool, 1)
@@ -59,7 +39,14 @@ func real_preview_server() {
 
 	fs := http.FileServer(http.Dir("./temp"))
 	http.Handle("/temp/", http.StripPrefix("/temp/", fs))
+
+	http.HandleFunc("/", index_real_preview_server)
+
 	http.ListenAndServe(":8888", nil)
+}
+func index_real_preview_server(w http.ResponseWriter, r *http.Request) {
+	html_template, _ := template.New("rpt_index").Parse(string(real_preview_html_index))
+	html_template.Execute(w, real_preview_one_html)
 }
 
 func one_real_preview_server(w http.ResponseWriter, r *http.Request, text, src_fname, out_fname, file_type string, datach *chan bool) {
