@@ -84,7 +84,7 @@ func image_build(setting setting_file_t, source string) []byte {
 	text := split_strings(source)
 
 	imageWidth, imageHeight := Get_img_wh(text, &opt, ft, face, setting)
-	fmt.Printf("Image size %d,%d\n", imageWidth, imageHeight)
+	//fmt.Printf("Image size %d,%d\n", imageWidth, imageHeight)
 
 	img := image.NewRGBA(image.Rect(0, 0, imageWidth, imageHeight))
 
