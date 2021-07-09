@@ -30,5 +30,6 @@ archives:
         format: zip
     files:
       - default_font
+
 release:
   prerelease: auto
