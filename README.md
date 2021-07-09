@@ -4,7 +4,8 @@ ASCII Art Compiler is the tool that output the png file, the pdf file or the htm
 ![img1](https://github.com/pengincoalition/ASCII_art_compiler/raw/master/explain/img1/output.png)
 
 # Features
-* This can output a png file, the pdf file or the html file by the ASCII art file.
+* This can output the png file, the pdf file or the html file by your ASCII art file.
+* This can show you the output of your ASCII art after compiling in your browser in real time.
 * This is the cli tool.
 * This is the single binary.
 
@@ -14,7 +15,6 @@ ASCII Art Compiler is the tool that output the png file, the pdf file or the htm
 mkdir your-project
 cd your-project
 acc new
-mv /favorite.ttf ./font/font.ttf
 #You rename any ttf font file to "font.ttf" and move it to "./font" dictionary.
 ```
 
@@ -34,10 +34,6 @@ acc build --type pdf
 acc build --type html
 #output.html
 ```
-
-# Futures
-* Making real time view.
-* Changing design of output files.
 
 
 
