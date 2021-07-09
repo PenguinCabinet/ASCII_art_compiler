@@ -42,7 +42,9 @@ func real_preview_server() {
 
 	http.HandleFunc("/", index_real_preview_server)
 
-	http.ListenAndServe(":8888", nil)
+	fmt.Printf("http://localhost:8994\n")
+	http.ListenAndServe(":8994", nil)
+
 }
 func index_real_preview_server(w http.ResponseWriter, r *http.Request) {
 	html_template, _ := template.New("rpt_index").Parse(string(real_preview_html_index))
