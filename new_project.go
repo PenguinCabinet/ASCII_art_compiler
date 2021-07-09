@@ -30,6 +30,10 @@ func new_project() {
 		log.Fatalln("The directory in which make a project must be empty.")
 	}
 
+	if _, err := os.Stat("main.aasc"); err == nil {
+		log.Fatalln("The directory in which make a project must be empty.")
+	}
+
 	make_file("main.aasc", []byte(""))
 	text, _ := json.Marshal(new_setting_file_t())
 	make_file("setting.json", (text))
